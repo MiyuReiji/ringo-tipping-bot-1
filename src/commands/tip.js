@@ -27,8 +27,8 @@ function tip (message, dogecoinNode, amount) {
     return
   }
 
-  var fromAccount = message.author.tag.replace('#', '')
-  var toAccount = to.username + to.discriminator
+  var fromAccount = message.author.id
+  var toAccount = to.id
 
   dogecoinNode.getBalance(fromAccount, function (err, balance) {
     if (err) {

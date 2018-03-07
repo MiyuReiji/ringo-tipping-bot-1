@@ -25,7 +25,7 @@ function withdraw (message, dogecoinNode, amount, toAddress) {
     return
   }
 
-  var fromAccount = message.author.tag.replace('#', '')
+  var fromAccount = message.id
 
   dogecoinNode.getBalance(fromAccount, function (err, balance) {
     if (err) {
