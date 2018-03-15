@@ -3,6 +3,7 @@ const dogecoin = require('node-dogecoin')()
 
 const settings = require('./settings')
 const Commands = require('./commands')
+const emotip = require('./emotip')
 
 // Init the Discord client
 const client = new Discord.Client()
@@ -22,7 +23,7 @@ client.on('message', message => {
   // If message has been emitted by a bot do nothing
   if (message.author.bot) return
 
-  if (message.content.startsWith('/wow')) {
+  if (message.content.startsWith(settings.BOT_PREFIX)) {
     var args = message.content.substring(1).split(' ')
     var command = args[1]
 
@@ -45,9 +46,6 @@ client.on('message', message => {
       case 'withdraw':
         Commands.withdraw(message, dogecoin, args[2], args[3])
         break
-      case 'adopt':
-        message.reply('Wow wow')
-        break
       case 'qrcode':
         Commands.qrcode(message, dogecoin, Discord)
         break
@@ -57,12 +55,11 @@ client.on('message', message => {
       default:
         message.reply('pong')
     }
-  } else {
-    // Special maxslayer44
-    if (message.content.indexOf('wow') >= 0) {
-      message.reply('To the MOOoooooooOOOOOOOOOOnnNNN !!')
-    }
   }
 })
+
+client.on('messageReactionAdd', (reaction, user) => {
+      emotip(reaction,user,dogecoin)
+  })
 
 client.login(settings.DISCORD_TOKEN)

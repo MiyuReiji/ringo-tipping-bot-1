@@ -20,7 +20,7 @@ function voucher (message, dogecoinNode, voucherCode) {
     if (validVoucher) {
       dogecoinNode.getBalance('', function (err, balance) {
         if (err) {
-          console.log(err)
+          console.error(err)
           message.channel.send(OOPS_TEXT)
           return
         }
@@ -33,7 +33,7 @@ function voucher (message, dogecoinNode, voucherCode) {
 
         dogecoinNode.move('', account, 30, function (err, result) {
           if (err) {
-            console.log(err)
+            console.error(err)
             message.channel.send(OOPS_TEXT)
             return
           }
