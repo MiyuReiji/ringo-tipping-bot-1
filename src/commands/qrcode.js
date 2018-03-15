@@ -8,6 +8,7 @@ function qrcode (message, coind, Discord) {
   coind.getAccountAddress(account, function (err, address) {
     // Fuck, we've got a problem
     if (err) {
+      console.error(err)
       message.channel.send(OOPS_TEXT)
       return
     }

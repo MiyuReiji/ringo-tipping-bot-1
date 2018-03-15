@@ -8,6 +8,7 @@ function balance (message, dogecoinNode) {
 
   dogecoinNode.getBalance(account, function (err, balance) {
     if (err) {
+      console.error(err)
       message.channel.send(OOPS_TEXT)
       return
     }

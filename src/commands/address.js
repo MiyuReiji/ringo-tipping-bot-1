@@ -9,6 +9,7 @@ function address (message, coind) {
   // Yes
   coind.getAccountAddress(account, function (err, address) {
     if (err) {
+      console.error(err)
       message.channel.send(OOPS_TEXT)
       return
     }
