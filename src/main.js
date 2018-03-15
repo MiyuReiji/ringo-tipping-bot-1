@@ -45,9 +45,6 @@ client.on('message', message => {
       case 'withdraw':
         Commands.withdraw(message, dogecoin, args[2], args[3])
         break
-      case 'adopt':
-        message.reply('Wow wow')
-        break
       case 'qrcode':
         Commands.qrcode(message, dogecoin, Discord)
         break
@@ -56,11 +53,6 @@ client.on('message', message => {
         break
       default:
         message.reply('pong')
-    }
-  } else {
-    // Special maxslayer44
-    if (message.content.indexOf('wow') >= 0) {
-      message.reply('To the MOOoooooooOOOOOOOOOOnnNNN !!')
     }
   }
 })
