@@ -3,6 +3,7 @@ const dogecoin = require('node-dogecoin')()
 
 const settings = require('./settings')
 const Commands = require('./commands')
+const emotip = require('./emotip')
 
 // Init the Discord client
 const client = new Discord.Client()
@@ -56,5 +57,9 @@ client.on('message', message => {
     }
   }
 })
+
+client.on('messageReactionAdd', (reaction, user) => {
+      emotip(reaction,user,dogecoin)
+  })
 
 client.login(settings.DISCORD_TOKEN)
