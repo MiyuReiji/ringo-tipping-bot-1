@@ -32,7 +32,7 @@ function tip (message, dogecoinNode, amount) {
 
   dogecoinNode.getBalance(fromAccount, function (err, balance) {
     if (err) {
-      console.log(err)
+      console.error(err)
       message.channel.send(OOPS_TEXT)
       return
     }
@@ -45,7 +45,7 @@ function tip (message, dogecoinNode, amount) {
 
     dogecoinNode.move(fromAccount, toAccount, amountInt, function (err, result) {
       if (err) {
-        console.log(err)
+        console.error(err)
         message.channel.send(OOPS_TEXT)
         return
       }
