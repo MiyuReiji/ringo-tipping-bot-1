@@ -8,4 +8,4 @@ const qrcode = require('./qrcode')
 const voucher = require('./voucher')
 
 
-module.exports = { help, tip, balance, rate, address, withdraw, qrcode, voucher }
+module.exports = { help, tip, balance, address, withdraw, qrcode, voucher }
