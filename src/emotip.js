@@ -3,7 +3,7 @@ const emotiplist = require('../emotiplist.json')
 
 const TIP_TEXT = 'Wow. Much coins.'
 const PROPER_AMOUNT_TEXT = 'You need provide a proper amount to be send.'
-const NOT_ENOUGH_FUNDS = 'Not enough funds for this transfer. Please add some dogecoins.'
+const NOT_ENOUGH_FUNDS = 'Not enough funds for this transfer. Please add some Ringo.'
 
 function emotip(reaction, user, coind) {
     //絵文字IDを表示
@@ -16,33 +16,35 @@ function emotip(reaction, user, coind) {
         let toAccount = reaction.message.author.id
         let amount = parseInt(emotiplist[reaction.emoji.id])
         if (fromAccount == toAccount || reaction.message.author.bot) return
-        console.log(fromAccount + ":" + toAccount + "+" + amount)
-        coind.getBalance(fromAccount, function (err, balance) {
-            if (err) {
-                console.error(err)
-                reaction.remove()
-                return
-            }
-            console.log(balance + "+" + amount)
-            // We don't have enough funds...
-            if (balance - amount <= 0) {
-                reaction.remove()
-                sendDM(user, NOT_ENOUGH_FUNDS)
-                return
-            }
 
-            coind.move(fromAccount, toAccount, amount, function (err, result) {
+        coind.getaccountaddress(toAccount, function () {
+            coind.getBalance(fromAccount, function (err, balance) {
                 if (err) {
                     console.error(err)
                     reaction.remove()
                     return
                 }
-                console.log(fromAccount + ">" + fromAccount + "=" + amount)
-                sendDM(reaction.message.author, user.username + "さんから" + amount)
+                console.log(balance + "+" + amount)
+                // We don't have enough funds...
+                if (balance - amount <= 0) {
+                    reaction.remove()
+                    sendDM(user, NOT_ENOUGH_FUNDS)
+                    return
+                }
 
+                coind.move(fromAccount, toAccount, amount, function (err, result) {
+                    if (err) {
+                        console.error(err)
+                        reaction.remove()
+                        return
+                    }
+                    console.log(fromAccount + ">" + fromAccount + "=" + amount)
+                    sendDM(reaction.message.author, user.username + "さんから" + amount)
+
+                })
             })
-        })
 
+        })
     }
 }
 
