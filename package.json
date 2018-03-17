@@ -1,6 +1,6 @@
 {
   "name": "ringo-tipping-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ringo tipping bot",
   "main": "src/main.js",
   "private": true,
