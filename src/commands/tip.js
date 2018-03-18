@@ -1,10 +1,10 @@
 const { OOPS_TEXT } = require('../messages')
 
-const TIP_TEXT = 'Wow. Much coins.'
-const PROPER_AMOUNT_TEXT = 'You need provide a proper amount to be send.'
-const NO_COMMA_TEXT = 'Please avoid "," in your amount and use "."'
-const NEED_USER_TEXT = 'Need a user as a third argument'
-const NOT_ENOUGH_FUNDS = 'Not enough funds for this transfer. Please add some RIN.'
+const TIP_TEXT = '指定先へRingoをお届けしました！'
+const PROPER_AMOUNT_TEXT = 'お届け数量が分かりません。半角数字かどうか確認して下さい。'
+const NO_COMMA_TEXT = '区切り文字 "," は使えません。小数点 "." を使って下さい。'
+const NEED_USER_TEXT = 'お届け先がわかりません。tip <数量> の続きに相手先を指定して下さい。'
+const NOT_ENOUGH_FUNDS = '残高が足りないかゼロです。balanceで残高を確認して下さい。'
 
 function tip (message, dogecoinNode, amount) {
   var to = message.mentions.users.first()
