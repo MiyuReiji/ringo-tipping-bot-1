@@ -1,6 +1,6 @@
 const { OOPS_TEXT } = require('../messages')
 
-const ADDRESS_TEXT = 'You can send Ringo to this address : '
+const ADDRESS_TEXT = 'Ringoの出荷先はこちらです : '
 
 function address (message, coind) {
   var account = message.author.id
