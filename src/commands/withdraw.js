@@ -1,11 +1,11 @@
 const { OOPS_TEXT } = require('../messages')
 
-const WITHDRAW_TEXT = 'Wow. Successful withdrawal.'
-const PROPER_AMOUNT_TEXT = 'You need provide a proper amount to be send.'
-const NO_COMMA_TEXT = 'Please avoid "," in your amount and use "."'
-const NEED_ADDRESS_TEXT = 'Need an address as a third argument'
-const NO_FUNDS = 'You dont have doge to transfer.'
-const NOT_ENOUGH_FUNDS = 'Not enough funds for this transfer. Please add some dogecoins.'
+const WITHDRAW_TEXT = '指定先へ発送しました！'
+const PROPER_AMOUNT_TEXT = 'お届け数量が分かりません。半角数字かどうか確認して下さい。'
+const NO_COMMA_TEXT = '区切り文字 "," は使えません。小数点 "." を使って下さい。'
+const NEED_ADDRESS_TEXT = 'お届け先が分かりません。withdraw <数量> の続きにお届け先Ringoアドレスを指定して下さい。'
+const NO_FUNDS = 'あれ？ あなたのRingo所持量はゼロのようです。'
+const NOT_ENOUGH_FUNDS = '残高が足りないかゼロです。balanceで残高を確認して下さい。（引出には0.0001Rinの手数料が必要です）'
 
 function withdraw (message, dogecoinNode, amount, toAddress) {
   var amountInt = parseInt(amount)
