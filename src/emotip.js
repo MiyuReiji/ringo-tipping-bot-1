@@ -1,9 +1,9 @@
 
 const emotiplist = require('../emotiplist.json')
 
-const TIP_TEXT = 'Wow. Much coins.'
-const PROPER_AMOUNT_TEXT = 'You need provide a proper amount to be send.'
-const NOT_ENOUGH_FUNDS = 'Not enough funds for this transfer. Please add some Ringo.'
+const TIP_TEXT = '指定先へRingoをお届けしました！'
+const PROPER_AMOUNT_TEXT = 'お届け数量が分かりません。半角数字かどうか確認して下さい。'
+const NOT_ENOUGH_FUNDS = '残高が足りないかゼロです。balanceで残高を確認して下さい。'
 
 function emotip(reaction, user, coind) {
     //絵文字IDを表示
