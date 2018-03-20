@@ -2,8 +2,8 @@
   "bot": {
     "prefix": "/bot"
   },
-  "coin":{
-    "unit":"RIN"
+  "coin": {
+    "unit": "RIN"
   },
   "discord": {
     "id": "<your-discord-id-here>",
@@ -15,5 +15,10 @@
     "port": 44555,
     "user": "<coind-rpc-user-here>",
     "password": "<coind-rpc-password-here>"
+  },
+  "emotip": {
+    "111111111111111111": "100",
+    "222222222222222222": "300",
+    "333333333333333333": "1000"
   }
 }

@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const dogecoin = require('node-dogecoin')()
+const coind = require('node-dogecoin')()
 
 const settings = require('./settings')
 const Commands = require('./commands')
@@ -9,11 +9,11 @@ const emotip = require('./emotip')
 const client = new Discord.Client()
 
 // Set our dogecoin node IP and port
-dogecoin.set('host', settings.RPC_HOST)
-dogecoin.set('port', settings.RPC_PORT)
+coind.set('host', settings.RPC_HOST)
+coind.set('port', settings.RPC_PORT)
 
 // Register auth value
-dogecoin.auth(settings.RPC_USER, settings.RPC_PASSWORD)
+coind.auth(settings.RPC_USER, settings.RPC_PASSWORD)
 
 client.on('ready', () => {
   console.log('I am ready!')
@@ -32,25 +32,25 @@ client.on('message', message => {
         Commands.help(message)
         break
       case 'tip':
-        Commands.tip(message, dogecoin, args[2])
+        Commands.tip(message, coind, args[2])
         break
       case 'balance':
-        Commands.balance(message, dogecoin)
+        Commands.balance(message, coind)
         break
-      case 'rate':
+      /*case 'rate':
         Commands.rate(message)
-        break
+        break*/
       case 'address':
-        Commands.address(message, dogecoin)
+        Commands.address(message, coind)
         break
       case 'withdraw':
-        Commands.withdraw(message, dogecoin, args[2], args[3])
+        Commands.withdraw(message, coind, args[2], args[3])
         break
       case 'qrcode':
-        Commands.qrcode(message, dogecoin, Discord)
+        Commands.qrcode(message, coind, Discord)
         break
       case 'voucher':
-        Commands.voucher(message, dogecoin, args[2])
+        Commands.voucher(message, coind, args[2])
         break
       default:
         message.reply('pong')
@@ -59,7 +59,11 @@ client.on('message', message => {
 })
 
 client.on('messageReactionAdd', (reaction, user) => {
-      emotip(reaction,user,dogecoin)
-  })
+  emotip(reaction, user, coind)
+})
 
 client.login(settings.DISCORD_TOKEN)
+
+process.on("SIGTERM", () => {
+  cliant.destroy().then(process.exit())
+})

@@ -1,7 +1,7 @@
 const { OOPS_TEXT } = require('../messages')
 const { rateDogeEur } = require('../requests')
 
-const BALANCE_TEXT = 'Balance: '
+const BALANCE_TEXT = 'あなたは '
 
 function balance (message, dogecoinNode) {
   var account = message.author.id
@@ -12,7 +12,7 @@ function balance (message, dogecoinNode) {
       message.channel.send(OOPS_TEXT)
       return
     }
-    message.channel.send(BALANCE_TEXT + balance +" RIN")
+    message.channel.send(BALANCE_TEXT + balance +" RIN所持しています。")
 })
 }
 
