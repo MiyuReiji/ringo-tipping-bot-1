@@ -17,7 +17,7 @@ function tip (message, dogecoinNode, amount) {
   var amountInt = parseFloat(amount)  //Intだと小数点が潰されてしまうのでfloatに
   //parseFloat(amount).toFixed(8)という手段もあるけど、これだと四捨五入で0.123456789と入れると0.12345679という結果になるので除外。
   //そのため、Math.floorで８桁ほど移動させ、残りをfloorで潰して再度8桁戻す。ちなみにsliceは数値には使えないらしい。
-  //他に良い方法があれば、そのやり方でお願いします。もしかして "amouintInt = "のところは要らない？
+  //他に良い方法があれば、そのやり方でお願いします。もしかして "amountInt = "のところは要らない？
   amountInt = Math.floor(amountInt * 100000000) /100000000
 
   if (!amountInt) {
